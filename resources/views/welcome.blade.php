@@ -21,6 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
+        @auth
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
@@ -149,5 +150,29 @@
                 </div>
             </div>
         </div>
+        @else
+            <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900">
+                <div class="w-full max-w-md px-6 py-8 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+                    <div class="flex justify-center mb-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-16 w-auto text-gray-700 dark:text-gray-300">
+                            <path d="M18.75 12.75h1.5a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM12 6a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 6ZM12 18a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 18ZM3.75 6.75h1.5a.75.75 0 1 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM5.25 18.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 0 1.5ZM3 12a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 12ZM9 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM12.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM9 15.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
+                        </svg>
+                    </div>
+
+                    <div class="space-y-4 text-center">
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Добро пожаловать в IDEAS</h1>
+                        <p class="text-gray-600 dark:text-gray-300">Пожалуйста, войдите в систему для доступа к панели управления</p>
+
+                        <div class="flex justify-center space-x-4 pt-6">
+                            <a href="{{ route('login') }}" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Войти</a>
+                            <span> / </span>
+                            @if(Route::has('register'))
+                                <a href="{{ route('register') }}" class="px-4 py-2 bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition">Регистрация</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endauth
     </body>
 </html>

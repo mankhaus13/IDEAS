@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // TT
 Route::get('/tt', [\App\Http\Controllers\TechnicalTaskController::class, 'index'])->name('tt.index');
 
@@ -35,4 +31,9 @@ Route::get('/prototype', [\App\Http\Controllers\PrototypingController::class, 'i
 // ANALYTICS
 Route::get('/analytics', [\App\Http\Controllers\AnalyticsController::class, 'index'])->name('analytics.index');
 
+
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
