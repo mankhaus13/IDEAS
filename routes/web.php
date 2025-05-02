@@ -18,6 +18,12 @@ Route::get('/tt', [\App\Http\Controllers\TechnicalTaskController::class, 'index'
 
 // PROJECT
 Route::get('/project', [\App\Http\Controllers\ProjectController::class, 'index'])->name('project.index');
+Route::get('/project/{id}/edit', [\App\Http\Controllers\ProjectController::class, 'edit'])->name('project.edit');
+Route::get('/project/create', [\App\Http\Controllers\ProjectController::class, 'create'])->name('project.create');
+Route::post('/project/search', [\App\Http\Controllers\ProjectController::class, 'search'])->name('project.search');
+Route::post('/project', [\App\Http\Controllers\ProjectController::class, 'store'] )->name('project.store');
+Route::put('/project/{id}', [\App\Http\Controllers\ProjectController::class, 'update'])->name('project.update');
+Route::delete('/project/{id}', [\App\Http\Controllers\ProjectController::class, 'destroy'])->name('project.destroy');
 
 // RESOURCE
 Route::get('/resource', [\App\Http\Controllers\ResourceController::class, 'index'])->name('resource.index');

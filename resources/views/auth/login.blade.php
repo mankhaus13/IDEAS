@@ -77,13 +77,13 @@
                         </label>
                     </div>
 
-                    @if (Route::has('password.request'))
+                    <!--@if (Route::has('password.request'))
                         <div class="text-sm">
                             <a href="{{ route('password.request') }}" class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
                                 Забыли пароль?
                             </a>
                         </div>
-                    @endif
+                    @endif-->
                 </div>
 
                 <!-- Кнопка входа -->

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Constants;
+namespace App\Constants\Auth;
 
 use App\Constants\Interfaces\HasAllConsts;
+
 class Roles implements HasAllConsts{
     const USER = 'user';
     const ADMIN = 'admin';

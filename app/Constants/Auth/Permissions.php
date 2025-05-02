@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Constants;
+namespace App\Constants\Auth;
 
 use App\Constants\Interfaces\HasAllConsts;
+
 class Permissions implements HasAllConsts {
     const READ = 'read';
     const CREATE = 'create';

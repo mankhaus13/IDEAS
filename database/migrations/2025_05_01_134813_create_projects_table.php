@@ -1,7 +1,5 @@
 <?php
 
-use App\Constants\Auth\Permissions;
-use App\Models\Permission;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,19 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('status');
+            $table->text('description')->nullable();
+            $table->date('start_date');
+            $table->date('deadline');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
-
-        $permissions = Permissions::getAll();
-
-        foreach ($permissions as $permission) {
-            Permission::create([
-                'title' => $permission
-            ]);
-        }
     }
 
     /**
@@ -37,9 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        $permissions = Permissions::getAll();
-        Permission::whereIn('title', $permissions)->delete();
-
-        Schema::dropIfExists('permissions');
+        Schema::dropIfExists('projects');
     }
 };

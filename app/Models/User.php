@@ -48,6 +48,12 @@ class User extends Authenticatable
     public function extraInfo() {
         return $this->hasOne(User_Profiles::class);
     }
+    public function managedProjects() {
+        return $this->hasMany(Project::class);
+    }
+    public function participatedProjects() {
+        return $this->belongsToMany(Project::class, 'project_user');
+    }
 
     public function hasRole($role) {
         if(is_string($role)) {
