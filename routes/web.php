@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 // TT
-Route::get('/tt', [\App\Http\Controllers\TechnicalTaskController::class, 'index'])->name('tt.index');
+Route::get('/tt/{projectId}', [\App\Http\Controllers\TechnicalTaskController::class, 'index'])->name('tt.index');
+Route::get('/tt/{projectId}/create', [\App\Http\Controllers\TechnicalTaskController::class, 'create'])->name('tt.create');
+Route::get('/tt/{ttId}/edit', [\App\Http\Controllers\TechnicalTaskController::class, 'edit'])->name('tt.edit');
+Route::post('/tt/{projectId}', [\App\Http\Controllers\TechnicalTaskController::class, 'store'])->name('tt.store');
+Route::put('/tt/{ttId}', [\App\Http\Controllers\TechnicalTaskController::class, 'update'])->name('tt.update');
+Route::delete('/tt/{ttId}', [\App\Http\Controllers\TechnicalTaskController::class, 'destroy'])->name('tt.destroy');
 
 // PROJECT
 Route::get('/project', [\App\Http\Controllers\ProjectController::class, 'index'])->name('project.index');
