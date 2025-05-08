@@ -38,10 +38,15 @@ Route::get('/document-flow', [\App\Http\Controllers\DocumentFlowController::clas
 
 // PROTOTYPING
 Route::get('/prototype', [\App\Http\Controllers\PrototypingController::class, 'index'])->name('prototype.index');
+Route::get('/prototype/create', [\App\Http\Controllers\PrototypingController::class, 'create'])->name('prototype.create');
+Route::get('/prototype/{id}/edit', [\App\Http\Controllers\PrototypingController::class, 'edit'])->name('prototype.edit');
+Route::post('/prototype', [\App\Http\Controllers\PrototypingController::class, 'store'])->name('prototype.store');
+Route::put('/prototype/{id}', [\App\Http\Controllers\PrototypingController::class, 'update'])->name('prototype.update');
+Route::delete('/prototype/{id}', [\App\Http\Controllers\PrototypingController::class, 'destroy'])->name('prototype.destroy');
+Route::get('/prototype/report', [\App\Http\Controllers\PrototypingController::class, 'generateReport'])->name('prototype.report');
 
 // ANALYTICS
 Route::get('/analytics', [\App\Http\Controllers\AnalyticsController::class, 'index'])->name('analytics.index');
-
 
 
 Auth::routes();
