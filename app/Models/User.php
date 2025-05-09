@@ -42,6 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function resources() {
+        return $this->hasMany(Resource::class);
+    }
     public function roles() {
         return $this->belongsToMany(Role::class, "user__roles");
     }
@@ -52,7 +55,7 @@ class User extends Authenticatable
         return $this->hasMany(Project::class);
     }
     public function participatedProjects() {
-        return $this->belongsToMany(Project::class, 'project_user');
+        return $this->belongsToMany(Project::class, 'project__user');
     }
 
     public function hasRole($role) {

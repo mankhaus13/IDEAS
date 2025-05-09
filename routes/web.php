@@ -32,21 +32,26 @@ Route::delete('/project/{id}', [\App\Http\Controllers\ProjectController::class, 
 
 // RESOURCE
 Route::get('/resource', [\App\Http\Controllers\ResourceController::class, 'index'])->name('resource.index');
+Route::get('/resource/create', [\App\Http\Controllers\ResourceController::class, 'create'])->name('resource.create');
+Route::get('/resource/report', [\App\Http\Controllers\ResourceController::class, 'generateReport'])->name('resource.report');
+Route::post('/resource', [\App\Http\Controllers\ResourceController::class, 'store'])->name('resource.store');
 
 // DOCUMENT_FLOW
-Route::get('/document-flow', [\App\Http\Controllers\DocumentFlowController::class, 'index'])->name('document-flow.index');
+//Route::get('/document-flow', [\App\Http\Controllers\DocumentFlowController::class, 'index'])->name('document-flow.index');
 
 // PROTOTYPING
 Route::get('/prototype', [\App\Http\Controllers\PrototypingController::class, 'index'])->name('prototype.index');
 Route::get('/prototype/create', [\App\Http\Controllers\PrototypingController::class, 'create'])->name('prototype.create');
 Route::get('/prototype/{id}/edit', [\App\Http\Controllers\PrototypingController::class, 'edit'])->name('prototype.edit');
+Route::get('/prototype/report', [\App\Http\Controllers\PrototypingController::class, 'generateReport'])->name('prototype.report');
 Route::post('/prototype', [\App\Http\Controllers\PrototypingController::class, 'store'])->name('prototype.store');
 Route::put('/prototype/{id}', [\App\Http\Controllers\PrototypingController::class, 'update'])->name('prototype.update');
 Route::delete('/prototype/{id}', [\App\Http\Controllers\PrototypingController::class, 'destroy'])->name('prototype.destroy');
-Route::get('/prototype/report', [\App\Http\Controllers\PrototypingController::class, 'generateReport'])->name('prototype.report');
 
 // ANALYTICS
 Route::get('/analytics', [\App\Http\Controllers\AnalyticsController::class, 'index'])->name('analytics.index');
+Route::get('/analytics/project_statistic', [\App\Http\Controllers\AnalyticsController::class, 'project_statistic'])->name('analytics.project_statistic');
+Route::get('/analytics/employee_employment', [\App\Http\Controllers\AnalyticsController::class, 'employee_employment'])->name('analytics.employee_employment');
 
 
 Auth::routes();
