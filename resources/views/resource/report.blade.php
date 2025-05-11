@@ -35,6 +35,7 @@
     </style>
 </head>
 <body>
+@auth
 <h1 style="text-align:center;">Отчет по ресурсам</h1>
 
 <div class="count-section">
@@ -68,5 +69,6 @@
     @endforeach
     </tbody>
 </table>
+@endauth
 </body>
 </html>

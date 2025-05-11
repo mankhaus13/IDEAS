@@ -18,6 +18,7 @@
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+@auth
 <div class="w-full max-w-md space-y-8">
     <!-- ЛОГО -->
     <div class="flex justify-center">
@@ -131,5 +132,6 @@
         </div>
     </div>
 </div>
+@endauth
 </body>
 </html>

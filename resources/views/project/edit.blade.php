@@ -18,6 +18,7 @@
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+@auth
 <div class="w-full max-w-md space-y-8">
     <!-- ЛОГО -->
     <div class="flex justify-center">
@@ -34,7 +35,7 @@
     <!-- Форма -->
     <div class="mt-8 bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg">
         <div class="px-6 py-8">
-            <form method="POST" action="{{ route('project.update', $project->id) }}" class="space-y-6">
+            <form method="POST" action="{{ route('project.update', $project->id) }}" class="space-y-6" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -100,6 +101,48 @@
                         @enderror
                     </div>
                 </div>
+                <!-- Поле для изменения файла -->
+                <div>
+                    <label for="project_file" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Изменить прикрепленный файл
+                    </label>
+                    <div class="mt-1">
+                        <input id="project_file" name="project_file" type="file"
+                               class="block w-full text-sm text-gray-500
+                                      file:mr-4 file:py-2 file:px-4
+                                      file:rounded-md file:border-0
+                                      file:text-sm file:font-semibold
+                                      file:bg-blue-50 file:text-blue-700
+                                      hover:file:bg-blue-100
+                                      dark:file:bg-gray-700 dark:file:text-white">
+                        @error('project_file')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Текущий файл -->
+                    @if($project->files->count() > 0)
+                        <div class="mt-2">
+                            <span class="text-sm text-gray-600 dark:text-gray-400">Текущий файл:</span>
+                            <ul class="mt-1">
+                                @foreach($project->files as $file)
+                                    <li class="flex items-center">
+                                        <a href="{{ Storage::url($file->path) }}"
+                                           target="_blank"
+                                           class="text-blue-600 hover:underline text-sm">
+                                            {{ $file->name }} ({{ round($file->size / 1024) }} KB)
+                                        </a>
+                                        <a href="{{ route('project.delete_file', [$project->id, $file->id]) }}"
+                                           class="ml-2 text-red-600 hover:text-red-800 text-sm"
+                                           onclick="return confirm('Удалить файл?')">
+                                            [Удалить]
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
 
                 <!-- Прогресс -->
                 <div class="pt-2">
@@ -129,5 +172,6 @@
         </div>
     </div>
 </div>
+@endauth
 </body>
 </html>

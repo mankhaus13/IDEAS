@@ -25,10 +25,12 @@ Route::delete('/tt/{ttId}', [\App\Http\Controllers\TechnicalTaskController::clas
 Route::get('/project', [\App\Http\Controllers\ProjectController::class, 'index'])->name('project.index');
 Route::get('/project/{id}/edit', [\App\Http\Controllers\ProjectController::class, 'edit'])->name('project.edit');
 Route::get('/project/create', [\App\Http\Controllers\ProjectController::class, 'create'])->name('project.create');
+Route::get('/project/{projectId}/{fileId}/delete_file', [\App\Http\Controllers\ProjectController::class, 'deleteFile'])->name('project.delete_file');
 Route::post('/project/search', [\App\Http\Controllers\ProjectController::class, 'search'])->name('project.search');
 Route::post('/project', [\App\Http\Controllers\ProjectController::class, 'store'] )->name('project.store');
 Route::put('/project/{id}', [\App\Http\Controllers\ProjectController::class, 'update'])->name('project.update');
 Route::delete('/project/{id}', [\App\Http\Controllers\ProjectController::class, 'destroy'])->name('project.destroy');
+
 
 // RESOURCE
 Route::get('/resource', [\App\Http\Controllers\ResourceController::class, 'index'])->name('resource.index');
@@ -36,8 +38,8 @@ Route::get('/resource/create', [\App\Http\Controllers\ResourceController::class,
 Route::get('/resource/report', [\App\Http\Controllers\ResourceController::class, 'generateReport'])->name('resource.report');
 Route::post('/resource', [\App\Http\Controllers\ResourceController::class, 'store'])->name('resource.store');
 
-// DOCUMENT_FLOW
-//Route::get('/document-flow', [\App\Http\Controllers\DocumentFlowController::class, 'index'])->name('document-flow.index');
+// FILE
+Route::get('/file/{id}/download', [\App\Http\Controllers\FileController::class, 'download'])->name('file.download');
 
 // PROTOTYPING
 Route::get('/prototype', [\App\Http\Controllers\PrototypingController::class, 'index'])->name('prototype.index');

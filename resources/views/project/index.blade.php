@@ -158,6 +158,24 @@
                                 </div>
                             </div>
                         </div>
+                        @if($project->files->count() > 0)
+                            <div class="mt-4">
+                                <div class="ml-4 text-sm text-gray-500">
+                                    <span class="font-medium">Прикрепленные файлы</span>
+                                </div>
+                                <ul class="mt-2">
+                                    @foreach($project->files as $file)
+                                        <li>
+                                            <a href="{{ route('file.download',$file->id) }}"
+                                               target="_blank"
+                                               class="text-blue-600 hover:underline">
+                                                {{ $file->name }} ({{ round($file->size / 1024) }} KB)
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                 @endforeach
             </div>

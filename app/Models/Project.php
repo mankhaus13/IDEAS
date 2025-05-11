@@ -29,6 +29,10 @@ class Project extends Model
     public function tasks() {
         return $this->belongsToMany(Tt::class, 'project__tts');
     }
+    public function files()
+    {
+        return $this->morphMany(File::class, 'fileable');
+    }
 
 
     public function total_tasks() {

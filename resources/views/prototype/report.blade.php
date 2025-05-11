@@ -47,6 +47,7 @@
     </style>
 </head>
 <body>
+@auth
 <div class="header">
     <div class="title">Отчет по экспериментам</div>
     <div class="subtitle">Дата формирования: {{ $date }}</div>
@@ -103,5 +104,6 @@
         </div>
     </div>
 </div>
+@endauth
 </body>
 </html>
